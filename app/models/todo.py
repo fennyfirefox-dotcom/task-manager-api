@@ -1,6 +1,6 @@
-from sqlalchemy import String, Text, Boolean#Column,Integer
+from sqlalchemy import String, Text, Boolean, ForeignKey
 from sqlalchemy.orm import mapped_column, Mapped
-from database import Base
+from app.database import Base
 
 
 class Todo(Base):
@@ -14,3 +14,4 @@ class Todo(Base):
         default=False,
         nullable=False
     )
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
